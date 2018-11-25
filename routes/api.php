@@ -27,3 +27,10 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 Route::group(['middleware' => 'jwt.refresh'], function(){
 	Route::get('auth/refresh', 'AuthController@refresh');
 });
+
+Route::get('/Lowongan/{namaLowongan}/{lokasi}', 'LowonganController@show');
+Route::post('/Lowongan','LowonganController@store');
+Route::get('/Lowongan/{id}', 'LowonganController@showDetail');
+Route::get('/Lamaran/{namaPelamar}', 'LamaranController@show');
+Route::get('/Lamaran/{id}/{namaLowongan}', 'LamaranController@showLowongan');
+Route::delete('/Lamaran/{id}', 'LamaranController@destroy');

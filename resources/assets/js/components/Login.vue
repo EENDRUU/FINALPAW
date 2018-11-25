@@ -43,7 +43,7 @@
                         alert(resp.response.data.msg)
                     },
                     rememberMe: true,
-                    redirect: '/dashboard',
+                    redirect: '/DashboardPelamar',
                     fetchUser: true,
                 });             
             },

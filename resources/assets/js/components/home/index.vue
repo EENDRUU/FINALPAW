@@ -52,7 +52,7 @@ export default {
 </script>
 <style>
     .header-image {
-                    background-image: url("../../img/backgroud_index.jpg");
+                    background-image: url("../../../img/backgroud_index.jpg");
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-attachment: fixed;

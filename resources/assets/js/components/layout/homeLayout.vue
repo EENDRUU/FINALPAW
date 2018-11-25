@@ -4,7 +4,7 @@
          <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="index.html">
-                <img src="../img/logo.png" width="112" height="28">
+                <img src="../../../img/logo.png" width="112" height="28">
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -16,7 +16,9 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                <router-link :to="{ name: 'home' }" class="navbar-item">Home</router-link>
+                <router-link :to="{name:'Index'}"  class="navbar-item" :class="{'is-black': burger}">
+                    Home
+                </router-link>
 
                <router-link :to="{name:'Search'}"  class="navbar-item" :class="{'is-black': burger}">
                     Cari Lowongan
@@ -24,7 +26,7 @@
                 <router-link :to="{name:'TambahLowongan'}"  class="navbar-item" :class="{'is-black': burger}">
                     Tambah Lowongan
                 </router-link>
-                <router-link :to="{name:'DashboardPelamar'}"  class="navbar-item" :class="{'is-black': burger}">
+                <router-link :to="{name:'dashboardPelamar'}"  class="navbar-item" :class="{'is-black': burger}">
                     Dashboard Pelamar
                 </router-link>
                 <router-link :to="{name:'DashboardPerusahaan'}"  class="navbar-item" :class="{'is-black': burger}">
@@ -36,21 +38,13 @@
 
                 <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="buttons" style="padding-right:20px;" v-if="!$auth.check()">
-                    
-                        <router-link :to="{name: 'register'}"  class="button is-info" :class="{'is-black': burger}">
+                    <div class="buttons" style="padding-right:20px;">
+                        <router-link :to="{name: 'Register'}"  class="button is-primary" :class="{'is-black': burger}">
                             Sign up
                         </router-link>
-                        <router-link :to="{name: 'login'}"  class="button is-primary" :class="{'is-black': burger}">
+                        <a class="button is-info">
                             Log in
-                        </router-link>
-                    </div>
-                    <div class="buttons" style="padding-right:20px;" v-if="$auth.check()">
-                        
-                        <router-link :to="{name: 'DashboardPelamar'}"  class="button is-info" :class="{'is-black': burger}">
-                            Dashboard
-                        </router-link>
-                        <a href="#" @click.prevent="$auth.logout()">Logout</a>
+                        </a>
                     </div>
                 </div>
                 </div>
@@ -72,40 +66,20 @@
             </div>
         </footer>
     </div>
+
+
 </div>
+
+
 </template>
+
+
+
 <script>
-export default {
-    // props: ['email','role'],
-    // data(){
-    //     return{
-    //         datas:[
+    export default {
 
-    //         ],
-    //     }
-    // }
-    // created(){
-    //     this.getData();
-    // },
+    }
 
-    // methods:{
-    //     getData(){
-
-    //          axios.get("Lowongan/"+this.id).then((response) => {
-    //              console.log(response);
-    //              this.datas = response.data;
-    //         }).catch(error => {
-    //             this.$toast.open({
-    //                 duration: 2000,
-    //                 message: error,
-    //                 position: 'is-bottom',
-    //                 type: 'is-danger',
-    //                 queue: false,
-    //             })
-    //         });
-    //     }
-    // }
-}
 document.addEventListener('DOMContentLoaded', () => {
 
     // Get all "navbar-burger" elements
@@ -132,6 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 </script>
-<style>
 
+<style>
+    .footer{
+        background-color: black;
+    }
 </style>

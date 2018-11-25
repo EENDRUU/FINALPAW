@@ -34,6 +34,7 @@
                 name: '',
                 email: '',
                 password: '',
+                role:'pelamar',
                 error: false,
                 errors: {},
                 success: false
@@ -47,7 +48,8 @@
                     params: {
                         name: app.name,
                         email: app.email,
-                        password: app.password
+                        password: app.password,
+                        role: app.role
                     }, 
                     success: function () {
                         app.success = true
