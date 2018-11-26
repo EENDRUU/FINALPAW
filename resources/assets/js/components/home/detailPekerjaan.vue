@@ -67,7 +67,8 @@
                     </p>
                     <div style="padding-top: 50px;">
                         <a class="button is-success is-outlined" > Back to search result</a>
-                        <a class="button is-info is-outlined" >Lamar Pekerjaan</a>
+                        <a href="#" class="button is-info is-outlined" @click="addLamaran($auth.user().name,data.namaPerusahaan,data.id,data.namaLowongan)">Lamar Pekerjaan</a>
+                        
                     </div>
 
                     </div>
@@ -106,6 +107,13 @@ export default {
     data(){
         return{
             datas:[],
+            a:{
+                namaPelamar: '',
+                namaPerusahaan: '',
+                idLowongan: '',
+                namaLowongan: '',
+            },
+            load: false,
         }
     },
     created(){
@@ -114,7 +122,7 @@ export default {
 
     methods:{
         getData(){
-
+            
              axios.get("Lowongan/"+this.id).then((response) => {
                  console.log(response);
                  this.datas = response.data;
@@ -127,6 +135,26 @@ export default {
                     queue: false,
                 })
             });
+        },
+        addLamaran(nPelamar,nPerusahaan,idL,namaL){
+            this.a.namaPelamar=nPelamar;
+            this.a.namaPerusahaan=nPerusahaan;
+            this.a.idLowongan=idL;
+            this.a.namaLowongan=namaL;
+            let uri="/Lamaran";
+             axios.post(uri,this.a).then((response) => {
+                this.load = false;
+
+            }).catch(error => {
+                this.$toast.open({
+                duration: 2000,
+                message: error,
+                position: 'is-bottom',
+                type: 'is-danger',
+                queue: false,
+            })
+            });
+
         }
     }
 }

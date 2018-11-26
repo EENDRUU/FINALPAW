@@ -11,6 +11,7 @@ import DashboardPelamar from './components/home/dashboardMenuPelamar.vue';
 import Search from './components/home/search.vue';
 import DetailPekerjaan from './components/home/detailPekerjaan.vue';
 import TambahLowongan from './components/home/tambahLowongan.vue';
+import ProfilePelamar from './components/home/profilPelamar.vue';
 
 
 require('./bootstrap');
@@ -87,6 +88,15 @@ const router = new VueRouter({
             name: 'TambahLowongan',
             path: '/TambahLowongan',
             component: TambahLowongan,
+            meta: {
+                auth: true
+            },
+            props: true
+        },
+        {
+            name: 'ProfilePelamar',
+            path: '/ProfilePelamar',
+            component: ProfilePelamar,
             meta: {
                 auth: true
             },

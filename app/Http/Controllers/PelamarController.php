@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Lamaran;
+use App\Pelamar;
 
-class LamaranController extends Controller
+class PelamarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class LamaranController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -35,14 +35,16 @@ class LamaranController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Lamaran();
+        $data = new Pelamar();
         $data->namaPelamar = $request->namaPelamar;
-        $data->namaPerusahaan = $request->namaPerusahaan;
-        $data->idLowongan = $request->idLowongan;
-        $data->namaLowongan = $request->namaLowongan;
+        $data->emailPelamar = $request->emailPelamar;
+        $data->tangalLahirPelamar = $request->tangalLahirPelamar;
+        $data->keahlianPelamar = $request->keahlianPelamar;
+        $data->Pendidikan = $request->Pendidikan;
+        $data->PengalamanKerja= $request->PengalamanKerja;
         $data->save();
 
-        return response()->json(['status'=>'200','Lamaran'=>$data]);
+        return response()->json(['status'=>'200','Pelamar'=>$data]);
 
     }
 
@@ -54,17 +56,7 @@ class LamaranController extends Controller
      */
     public function show($namaPelamar)
     {
-        $data = Lamaran::where('namaPelamar', $namaPelamar)->get();
-        if(is_null($data)){
-            return response()->json('Not Found',404);
-        }
-        else
-            return response()->json($data,200);
-    }
-
-    public function showLowongan($idLowongan,$namaLowongan)
-    {
-        $data = Lamaran::where('idLowongan', $idLowongan)->where('namaLowongan',$namaLowongan)->get();
+        $data = Pelamar::where('namaPelamar', $namaPelamar)->get();
         if(is_null($data)){
             return response()->json('Not Found',404);
         }
@@ -90,9 +82,18 @@ class LamaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $namaPelamar)
     {
-        //
+      
+        $data = Pelamar::where('namaPelamar',$namaPelamar)->first();
+        $data->namaPelamar = $request->namaPelamar;
+        $data->emailPelamar = $request->emailPelamar;
+        $data->tangalLahirPelamar = $request->tangalLahirPelamar;
+        $data->keahlianPelamar = $request->keahlianPelamar;
+        $data->Pendidikan = $request->Pendidikan;
+        $data->PengalamanKerja= $request->PengalamanKerja;
+        $data->save();
+        return $data;
     }
 
     /**
@@ -103,8 +104,6 @@ class LamaranController extends Controller
      */
     public function destroy($id)
     {
-        $data = Lamaran::where('id',$id)->first();
-        $data->delete();
-        returnredirect('lamarans')->with('success','Information has been  deleted');
+        //
     }
 }

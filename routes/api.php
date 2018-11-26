@@ -34,3 +34,8 @@ Route::get('/Lowongan/{id}', 'LowonganController@showDetail');
 Route::get('/Lamaran/{namaPelamar}', 'LamaranController@show');
 Route::get('/Lamaran/{id}/{namaLowongan}', 'LamaranController@showLowongan');
 Route::delete('/Lamaran/{id}', 'LamaranController@destroy');
+Route::post('/Lamaran','LamaranController@store');
+Route::get('/Pelamar/{namaPelamar}', 'PelamarController@show');
+Route::put('/Pelamar/{namaPelamar}', 'PelamarController@update');
+Route::post('/Pelamar', 'PelamarController@store');
+

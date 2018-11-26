@@ -12,64 +12,69 @@
                 <h1 class="title1">
                     Profil Pelamar
                 </h1><br><br>
-                <figure class="image is-128x128" style="center">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                </figure>
-                <br>
-                <div class="field">
-                    <label class="label">Nama Pelamar</label>
-                    <div class="control">
-                    <input class="input" type="nama_pelamar" placeholder="">
-                    </div>
-                </div>
+                <form @submit.prevent="addmessage();load = true">
+                            <figure class="image is-128x128" style="center">
+                            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                        <br>
+                        <div class="field">
+                            <label class="label">Nama Pelamar</label>
+                            <div class="control">
+                            <input class="input" type="text" placeholder="" v-model="data.namaPelamar"> 
+                            </div>
+                        </div>
 
-                <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control">
-                    <input class="input" type="email" placeholder="">
-                    </div>
-                </div>
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control">
+                            <input class="input" type="text" placeholder="" v-model="data.emailPelamar">
+                            </div>
+                        </div>
 
-                <div class="field">
-                    <label class="label">TTL</label>
-                    <div class="control">
-                    <input class="input" type="ttl" placeholder="">
-                    </div>
-                </div>
+                        <div class="field">
+                            <label class="label">TTL</label>
+                            <div class="control">
+                            <input class="input" type="date" placeholder="" v-model="data.tangalLahirPelamar">
+                            </div>
+                        </div>
 
-                <div class="field">
-                    <label class="label">Keahlian</label>
-                    <div class="control">
-                    <textarea rows="10" cols="95">
+                        <div class="field">
+                            <label class="label">Keahlian</label>
+                            <div class="control">
+                            <textarea rows="10" cols="95" v-model="data.keahlianPelamar">
 
-                    </textarea>
+                            </textarea>
 
-                    </div>
-                </div>
+                            </div>
+                        </div>
 
-                <div class="field">
-                    <label class="label">Pendidikan</label>
-                    <div class="control">
-                    <input class="input" type="pendidikan" placeholder="">
-                    </div>
-                </div>
+                        <div class="field">
+                            <label class="label">Pendidikan</label>
+                            <div class="control">
+                            <input class="input" type="text" placeholder="" v-model="data.Pendidikan">
+                            </div>
+                        </div>
 
-                <div class="field">
-                    <label class="label">Pengalaman Kerja</label>
-                    <div class="control">
-                    <textarea rows="10" cols="95">
+                        <div class="field">
+                            <label class="label">Pengalaman Kerja</label>
+                            <div class="control">
+                            <textarea rows="10" cols="95" v-model="data.PengalamanKerja">
 
-                    </textarea>
+                            </textarea>
 
-                    </div>
-                </div>
-                <div class="field is-grouped">
-                    <div class="control">
-                    <br>
-                    <router-link :to="{name:'RegisterPerusahaan'}" class="button is-link" :class="{'is-black': burger}">
-                        Simpan</router-link>
-                    </div>
-                </div>
+                            </div>
+                        </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                            <br>
+                            <div class="control">
+                                    <button class="button is-link" :class="{'is-loading':load}">Simpan</button>
+                            </div>
+                            </div>
+                        </div>
+
+                </form>
+                
             </div>
         </div>
         </div>
@@ -80,32 +85,43 @@
 export default {
     data(){
         return{
-            datas:[]
+            data:{
+                
+                namaPelamar:'',
+                emailPelamar:'',
+                tangalLahirPelamar:'',
+                keahlianPelamar:'',
+                Pendidikan:'',
+                PengalamanKerja:'',
+            },
+            load: false,
         }
-    },
-    created(){
-        this.getData();
     },
 
     methods:{
-        getData(){
-             let uri="/api/Lowongan";
-             axios.get(uri).then((response) => {
-                 console.log(response);
-                 this.datas = response.data;
+        addmessage(){
+            let uri="/Pelamar";
+             axios.post(uri,this.data).then((response) => {
+                alert("Lowongan Berhasil Ditambah!!");
+                this.load = false;
+
+
             }).catch(error => {
                 this.$toast.open({
-                    duration: 2000,
-                    message: error,
-                    position: 'is-bottom',
-                    type: 'is-danger',
-                    queue: false,
-                })
+                duration: 2000,
+                message: error,
+                position: 'is-bottom',
+                type: 'is-danger',
+                queue: false,
+            })
             });
-        }
+        
+        
     }
 }
+}
 </script>
+
 
  <style>
             .header-image {
