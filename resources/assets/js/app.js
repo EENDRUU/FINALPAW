@@ -25,7 +25,7 @@ Vue.use(Buefy,{defaultIconPack: 'fa'}, VueRouter, axios);
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 
-axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = 'http://infokerja2.thekingcorp.org/api';
 const router = new VueRouter({
     routes: [
         {
