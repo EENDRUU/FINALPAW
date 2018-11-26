@@ -24,12 +24,6 @@
                 <router-link :to="{name:'TambahLowongan'}"  class="navbar-item" :class="{'is-black': burger}">
                     Tambah Lowongan
                 </router-link>
-                <router-link :to="{name:'DashboardPelamar'}"  class="navbar-item" :class="{'is-black': burger}">
-                    Dashboard Pelamar
-                </router-link>
-                <router-link :to="{name:'DashboardPerusahaan'}"  class="navbar-item" :class="{'is-black': burger}">
-                    Dashboard Perusahaan
-                </router-link>
 
 
                 </div>
